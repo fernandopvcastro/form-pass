@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html ng-app="medical">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Juliana Jordão</title>
+
+	<link rel="stylesheet" href="src/css/style.min.css">
+</head>
+
+<body>
+	<header class="header">
+		<div class="wrapper">
+			<img src="src/images/linhas-header.png" class="header__logo" alt="Juliana Jordão">
+		</div>
+	</header>
+
+	<main class="container formulario">
+		<div class="wrapper">
+			<form id="form" class="form">
+				<div class="passo passo1">
+					<div class="form__input">
+						<label class="placeholder__text" for="Nome">Nome</label>
+						<input type="text" class="nome input" name="nome">
+					</div>
+
+					<div class="form__input">
+						<label class="placeholder__text" for="email">E-mail</label>
+						<input type="email" class="email input" name="email">
+					</div>
+
+					<div class="form__input">
+						<span class="label__text">Sexo</span>
+
+						<div class="radio-box">
+							<div class="radio-box__item">
+								<input type="radio" name="gender" id="female" checked class="gender" value="Feminino">
+								<label for="female">Feminino</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" name="gender" id="male" class="gender" value="Masculino">
+								<label for="male">Masculino</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<label for="mensagem">Quais os principais motivos da sua consulta de hoje?</label>
+						<textarea name="mensagem" id="mensagem" class="mensagem"></textarea>
+					</div>
+				</div>
+
+				<div class="passo passo2">
+					<div class="form__input">
+						<label>Você já teve uma consulta ou realizou algum procedimento estético antes?</label>
+
+						<div class="radio-box">
+							<div class="radio-box__item">
+								<input type="radio" id="yes1" name="pergunta1" value="Sim">
+								<label for="yes1">Sim</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="no1" name="pergunta1" value="Não">
+								<label for="no1">Não</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<label>Selecione três atributos emocionais que melhor refletem como você gostaria de se sentir após o tratamento:</label>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo1" class="checkbox" name="pergunta2" value="Quero parecer menos cansado(a)" onclick="verificar()">
+								<label for="atributo1">Quero parecer menos cansado(a)</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo2" class="checkbox" name="pergunta2" value="Quero parecer menos bravo(a)" onclick="verificar()">
+								<label for="atributo2">Quero parecer menos bravo(a)</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo3" class="checkbox" name="pergunta2" value="Quero parecer menos triste" onclick="verificar()">
+								<label for="atributo3">Quero parecer menos triste</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo4" class="checkbox" name="pergunta2" value="Quero uma aparência menos flácida" onclick="verificar()">
+								<label for="atributo4">Quero uma aparência menos flácida</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo5" class="checkbox" name="pergunta2" value="Quero parecer mais jovem" onclick="verificar()">
+								<label for="atributo5">Quero parecer mais jovem</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo6" class="checkbox" name="pergunta2" value="Quero que meu rosto pareça mais magro" onclick="verificar()">
+								<label for="atributo6">Quero que meu rosto pareça mais magro</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="atributo7" class="checkbox" name="pergunta2" value="Quero características mais suaves" onclick="verificar()">
+								<label for="atributo7">Quero características mais suaves</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo3">
+					<div class="form__input">
+						<label style="text-align:center;">Marque as áreas do seu interesse:</label>
+					</div>
+
+					<div class="tabs">
+						<ul class="nav_tab">
+							<li class="nav_tab-item active" onclick="anterior()">
+								<a href="javascript:void(0);" class="tab-link" title="Rosto">Rosto</a>
+							</li>
+							<li class="nav_tab-item" onclick="proxima()">
+								<a href="javascript:void(0);" class="tab-link" title="Corpo">Corpo</a>
+							</li>
+						</ul>
+
+						<div id="rosto">
+							<div class="cards-container">
+								<div class="body-list">
+									<div class="radio-box vertical__list" style="padding-top:95px;">
+										<div class="radio-box__item">
+											<input type="checkbox" id="face1" class="checkbox" name="pergunta3" value="Olheiras">
+											<label for="face1">Olheiras</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face2" class="checkbox" name="pergunta3" value="Lábios">
+											<label for="face2">Lábios</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face3" class="checkbox" name="pergunta3" value="Bochechas">
+											<label for="face3">Bochechas</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face4" class="checkbox" name="pergunta3" value="Rugas da testa">
+											<label for="face4">Rugas da testa</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face5" class="checkbox" name="pergunta3" value="Ruga de bravo">
+											<label for="face5">Ruga de bravo</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face6" class="checkbox" name="pergunta3" value="Ruga dos olhos">
+											<label for="face6">Ruga dos olhos</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face7" class="checkbox" name="pergunta3" value="Bigode chinês">
+											<label for="face7">Bigode chinês</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face8" class="checkbox" name="pergunta3" value="Rugas da boca">
+											<label for="face8">Rugas da boca</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face9" class="checkbox" name="pergunta3" value="Flacidez pescoço">
+											<label for="face9">Flacidez pescoço</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="face10" class="checkbox" name="pergunta3" value="Rugas pescoço">
+											<label for="face10">Rugas pescoço</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo3">
+					<div class="form__input">
+						<label style="text-align:center;">Marque as áreas do seu interesse:</label>
+					</div>
+
+					<div class="tabs">
+						<ul class="nav_tab">
+							<li class="nav_tab-item" onclick="anterior()">
+								<a href="javascript:void(0);" class="tab-link" title="Rosto">Rosto</a>
+							</li>
+							<li class="nav_tab-item active" onclick="proxima()">
+								<a href="javascript:void(0);" class="tab-link" title="Corpo">Corpo</a>
+							</li>
+						</ul>
+
+						<div id="corpo">
+							<div class="cards-container">
+								<div class="body-list">
+									<div class="radio-box vertical__list" style="padding-top:95px;">
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo1" class="checkbox" name="pergunta4" value="Gordura abdominal">
+											<label for="corpo1">Gordura abdominal</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo2" class="checkbox" name="pergunta4" value="Flacidez abdominal">
+											<label for="corpo2">Flacidez abdominal</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo3" class="checkbox" name="pergunta4" value="Celulite glúteos">
+											<label for="corpo3">Celulite glúteos</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo4" class="checkbox" name="pergunta4" value="Celulite coxas">
+											<label for="corpo4">Celulite coxas</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo5" class="checkbox" name="pergunta4" value="Flacidez glúteo">
+											<label for="corpo5">Flacidez glúteo</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo6" class="checkbox" name="pergunta4" value="Flacidez coxa">
+											<label for="corpo6">Flacidez coxa</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo7" class="checkbox" name="pergunta4" value="Flacidez braço">
+											<label for="corpo7">Flacidez braço</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo8" class="checkbox" name="pergunta4" value="Gordura costas (dobra abaixo do sutiã)">
+											<label for="corpo8" class="multiple">Gordura costas<br>(dobra abaixo do sutiã)</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo9" class="checkbox" name="pergunta4" value="Rugas colo">
+											<label for="corpo9">Rugas colo</label>
+										</div>
+
+										<div class="radio-box__item">
+											<input type="checkbox" id="corpo10" class="checkbox" name="pergunta4" value="Manchas colo">
+											<label for="corpo10">Manchas colo</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo4">
+					<div class="form__input">
+						<label>Como você classifica a qualidade da sua pele?</label>
+
+						<div class="radio-box">
+							<div class="radio-box__item">
+								<input type="radio" id="razoavel" name="pergunta5" value="Razoável">
+								<label for="razoavel">Razoável</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="boa" name="pergunta5" value="Boa">
+								<label for="boa">Boa</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="mboa" name="pergunta5" value="Muito boa">
+								<label for="mboa">Muito boa</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="excelent" name="pergunta5" value="Excelente">
+								<label for="excelent">Excelente</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<label>Se você pudesse melhorar UM aspecto da sua pele, o que você melhoraria?</label>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="radio" id="hidratacao" name="pergunta6" value="Hidratação">
+								<label for="hidratacao">Hidratação</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="elasticidade" name="pergunta6" value="Elasticidade">
+								<label for="elasticidade">Elasticidade</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="suavidade" name="pergunta6" value="Suavidade">
+								<label for="suavidade">Suavidade</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="coloracao" name="pergunta6" value="Coloração">
+								<label for="coloracao">Coloração</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="radio" id="outro1" name="pergunta6" value="Outro">
+								<label for="outro1">Outro</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo5">
+					<div class="form__input">
+						<label>Estes tratamentos/produtos me interessam:</label>
+
+						<span class="subtitle">Melhora da pele</span>
+
+						<div class="row">
+							<div class="col col1">
+								<div class="radio-box vertical__list">
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele1" class="checkbox" name="pergunta7" value="Tratamentos para melasma">
+										<label for="melhoria-pele1">Tratamentos para melasma</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele2" class="checkbox" name="pergunta7" value="Produtos cosméticos">
+										<label for="melhoria-pele2">Produtos cosméticos</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele3" class="checkbox" name="pergunta7" value="Tratamento a laser">
+										<label for="melhoria-pele3">Tratamento a laser</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele4" class="checkbox" name="pergunta7" value="Peeling">
+										<label for="melhoria-pele4">Peeling</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col col2">
+								<div class="radio-box vertical__list">
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele5" class="checkbox" name="pergunta7" value="Revitalização facial">
+										<label for="melhoria-pele5">Revitalização facial</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele6" class="checkbox" name="pergunta7" value="Limpeza de pele">
+										<label for="melhoria-pele6">Limpeza de pele</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele7" class="checkbox" name="pergunta7" value="Microagulhamento">
+										<label for="melhoria-pele7">Microagulhamento</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="melhoria-pele8" class="checkbox" name="pergunta7" value="Luz pulsada">
+										<label for="melhoria-pele8">Luz pulsada</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<span class="subtitle">Melhora da face</span>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face1" class="checkbox" name="pergunta8" value="Bioestimuladores (injetável para estímulo de colágeno)">
+								<label for="melhoria-face1">Bioestimuladores (injetável para estímulo de colágeno)</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face2" class="checkbox" name="pergunta8" value="Skinbooster (injetável para melhora da qualidade e hidratação da pele)">
+								<label for="melhoria-face2" class="multiple">Skinbooster (injetável para melhora da qualidade e hidratação da pele)</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face3" class="checkbox" name="pergunta8" value="Ultrassom Microfocado (Ulthera, Ultraformer ou Accutyte)">
+								<label for="melhoria-face3" class="multiple">Ultrassom Microfocado (Ulthera, Ultraformer ou Accutyte)</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face4" class="checkbox" name="pergunta8" value="Preenchimentos faciais">
+								<label for="melhoria-face4">Preenchimentos faciais</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face5" class="checkbox" name="pergunta8" value="Sculptra">
+								<label for="melhoria-face5">Sculptra</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="melhoria-face6" class="checkbox" name="pergunta8" value="Toxina botulínica">
+								<label for="melhoria-face6">Toxina botulínica</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo6">
+					<div class="form__input">
+						<label>Estes tratamentos/produtos me interessam:</label>
+
+						<span class="subtitle">Tratamentos corporais</span>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal1" class="checkbox" name="pergunta9" value="Remoção de manchas das mãos, cólo ou pescoço">
+								<label for="trata-corporal1">Remoção de manchas das mãos, cólo ou pescoço</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal2" class="checkbox" name="pergunta9" value="Tratamento de flacidez corporal">
+								<label for="trata-corporal2">Tratamento de flacidez corporal</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal3" class="checkbox" name="pergunta9" value="Tratamento de celulite">
+								<label for="trata-corporal3">Tratamento de celulite</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal4" class="checkbox" name="pergunta9" value="Tratamento das rugas/ flacidez de mãos, cólo ou pescoço">
+								<label for="trata-corporal4" class="multiple">Tratamento das rugas/ flacidez de mãos, cólo ou pescoço</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal5" class="checkbox" name="pergunta9" value="Redução de gordura localizada">
+								<label for="trata-corporal5">Redução de gordura localizada</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="trata-corporal6" class="checkbox" name="pergunta9" value="Depilação">
+								<label for="trata-corporal6">Depilação</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<span class="subtitle">Outros</span>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="checkbox" id="outro01" class="checkbox" name="pergunta10" value="Tratamento de cicatrizes por trauma ou cirurgia">
+								<label for="outro01">Tratamento de cicatrizes por trauma ou cirurgia</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="outro02" class="checkbox" name="pergunta10" value="Remoção de tatuagem">
+								<label for="outro02">Remoção de tatuagem</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="passo passo7">
+					<div class="form__input">
+						<label>Como você ficou sabendo sobre nós?</label>
+
+						<div class="row">
+							<div class="col col1">
+								<div class="radio-box vertical__list">
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato1" class="checkbox" name="pergunta11" value="Meu médico">
+										<label for="meios-contato1">Meu médico</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato2" class="checkbox" name="pergunta11" value="Plano de saúde">
+										<label for="meios-contato2">Plano de saúde</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato3" class="checkbox" name="pergunta11" value="Anúncios / Revistas">
+										<label for="meios-contato3">Anúncios / Revistas</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato4" class="checkbox" name="pergunta11" value="Um amigo / Familia">
+										<label for="meios-contato4">Um amigo / Familia</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col col2">
+								<div class="radio-box vertical__list">
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato5" class="checkbox" name="pergunta11" value="Site">
+										<label for="meios-contato5">Site</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato6" class="checkbox" name="pergunta11" value="Mídias sociais">
+										<label for="meios-contato6">Mídias sociais</label>
+									</div>
+
+									<div class="radio-box__item">
+										<input type="checkbox" id="meios-contato7" class="checkbox" name="pergunta11" value="Outros">
+										<label for="meios-contato7">Outros</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form__input">
+						<label>Informações de contato</label>
+
+						<div class="radio-box vertical__list">
+							<div class="radio-box__item">
+								<input type="checkbox" id="meios-contato8" class="checkbox" name="pergunta12" value="Gostaria de receber informações sobre novos produtos/tendências/novos tratamentos disponíveis em nossa clínica">
+								<label for="meios-contato8" class="multiple">Gostaria de receber informações sobre novos produtos/tendências/novos tratamentos disponíveis em nossa clínica</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="meios-contato9" class="checkbox" name="pergunta12" value="Gostaria de receber informações sobre promoções de procedimentos realizados na clínica">
+								<label for="meios-contato9" class="multiple">Gostaria de receber informações sobre promoções de procedimentos realizados na clínica</label>
+							</div>
+
+							<div class="radio-box__item">
+								<input type="checkbox" id="meios-contato10" class="checkbox" name="pergunta12" value="Caso realize algum procedimento, gostaria de ser avisado(a) quando a data de sua próxima sessão estiver se aproximando">
+								<label for="meios-contato10" class="multiple">Caso realize algum procedimento, gostaria de ser avisado(a) quando a data de sua próxima sessão estiver se aproximando</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</main>
+
+	<footer class="footer">
+		<div class="wrapper">
+			<div id="pagi"></div>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="src/js/lib/jquery.validate.min.js"></script>
+
+
+	<script src="src/js/app/init.js"></script>
+</body>
+</html>
