@@ -60,4 +60,26 @@
 			}
 		}
 	}
+	.bt_next {
+
+	}
+	.bt_enviar {
+		display:none;
+	}
+	.btn_enviar {
+		display:block;
+		box-sizing: border-box;
+		border: 2px solid #552B64;
+		font-family:'effraregular';
+		text-decoration:none;
+		text-align:center;
+		font-size:20px;
+		line-height:55px;
+		height: 60px;
+		width: 140px;
+		border-radius: 30px;
+		background-color: #552B64;
+		color:#fff;
+		letter-spacing:2px;
+	}
 }

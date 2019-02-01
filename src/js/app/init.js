@@ -35,7 +35,7 @@ $(document).ready(function(){
 		"</span></li>";
 		link_atual++;
 	}
-	nevagacao += '<li onclick="proxima()"><a class="next">Próxima</a></li>';
+	nevagacao += '<li class="bt_next" onclick="proxima()"><a class="next">Próxima</a></li><li class="bt_enviar"><input type="submit" class="btn_enviar" valeu="Enviar"></li>';
 
 	//colocamos a nevegação dentro da div class controls
 	$('.controls').html('<div class="paginacao">\
@@ -82,6 +82,42 @@ $(document).ready(function(){
     //     $(this).parent().addClass('active');
     //     return false
     // });
+
+
+    // VALIDA FORMULARIO
+    $('#form').validate({
+        rules: {
+            nome: "required",
+            email: {required:true, email:true}
+        },
+        messages: {
+            nome: " ",
+            email: {required:" ", email:" "}
+        },
+        submitHandler: function (){
+            var nome = $('#form .nome').val();
+            var email = $('#form .email').val();
+            $.ajax({
+                // url: "https://docs.google.com/forms/d/1kr7oio7_Q696f7q1Wd--nDpG9Od8zm-dGfyUWT-WJd0/formResponse",
+                url: "https://docs.google.com/forms/d/e/1FAIpQLSdLGLRKBzrdktz4ASoSudlWEMyAsQFFnB8qm7Meq3UoDH0zpQ/formResponse",
+                data: {"entry.385834645" : nome, "entry.1989384119" : email},
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function (){
+                        $('#form .nome').val("");
+                        $('#form .email').val("");
+                        // $('#inline_content h3, #inline_content .wpcf7-form .form1, #inline_content .wpcf7-form p').hide();
+                    },
+                    200: function (){
+                        $('#form .nome').val("");
+                        $('#form .email').val("");
+                        // $('#inline_content h3, #inline_content .wpcf7-form .form1, #inline_content .wpcf7-form p').hide();
+                    }
+                }
+            });
+        }
+	});
 });
 
 
@@ -113,6 +149,11 @@ function proxima(nova_pagina) {
 
     //se houver um item após o link ativo atual executar a função
     if ($('.active').next('.page').length == true) {
+        if ($('.page.active[longdesc="5"]') == true) {
+	    	console.log("entrou");
+	    	$('.bt_next').hide();
+	    	$('.bt_enviar').show();
+	    }
         ir_para_pagina(nova_pagina);
     }
 }

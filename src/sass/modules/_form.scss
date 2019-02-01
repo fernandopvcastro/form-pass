@@ -134,26 +134,6 @@
 		padding:0 5px;
 		box-sizing: border-box;
 	}
-	&__enviar {
-		font-family: 'Roboto', sans-serif;
-		font-size: 14px;
-		font-weight: bold;
-		text-transform: uppercase;
-		color: #fff;
-		background-color: #ca0b0b;
-		margin-top: 10px;
-		padding: 10px 40px;
-		cursor: pointer;
-		width: auto;
-		max-width: inherit;
-		border-radius: 20px;
-		border:0;
-		transition: .3s;
-		outline:none;
-		&:hover {
-			opacity:.8;
-		}
-	}
 }
 
 .form .passo3 {
