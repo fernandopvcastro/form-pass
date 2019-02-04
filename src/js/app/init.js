@@ -97,6 +97,7 @@ $(document).ready(function(){
         submitHandler: function (){
             var nome = $('#form .nome').val();
             var email = $('#form .email').val();
+            console.log("enviou");
             $.ajax({
                 // url: "https://docs.google.com/forms/d/1kr7oio7_Q696f7q1Wd--nDpG9Od8zm-dGfyUWT-WJd0/formResponse",
                 url: "https://docs.google.com/forms/d/e/1FAIpQLSdLGLRKBzrdktz4ASoSudlWEMyAsQFFnB8qm7Meq3UoDH0zpQ/formResponse",
@@ -141,6 +142,8 @@ function anterior(nova_pagina) {
     //se houver um item antes do link ativo atual executar a função
     if ($('.active').prev('.page').length == true) {
         ir_para_pagina(nova_pagina);
+        $('.bt_next').show();
+	    $('.bt_enviar').hide();
     }
 }
 
@@ -149,8 +152,7 @@ function proxima(nova_pagina) {
 
     //se houver um item após o link ativo atual executar a função
     if ($('.active').next('.page').length == true) {
-        if ($('.page.active[longdesc="5"]') == true) {
-	    	console.log("entrou");
+        if ($('.page[longdesc="6"]').hasClass('active')) {
 	    	$('.bt_next').hide();
 	    	$('.bt_enviar').show();
 	    }
