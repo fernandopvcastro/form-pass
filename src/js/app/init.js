@@ -19,14 +19,6 @@ $(document).ready(function(){
 	var link_atual = 0;
 	while (numero_de_paginas > link_atual) {
 		nevagacao +=
-		// '<li class="page" onclick="ir_para_pagina(' +
-		// link_atual +
-		// ')" longdesc="' +
-		// link_atual +
-		// '"><span>' +
-		// (link_atual + 1) +
-		// "</span></li>";
-		// link_atual++;
 		'<li class="page"' +
 		' longdesc="' +
 		link_atual +
@@ -43,8 +35,8 @@ $(document).ready(function(){
 
 	//atribuimos ao primeiro link a class active
 	$('.controls .page:first').addClass('active');
-	$('#form').children('.passo').fadeOut();
-	$('#form').children().slice(0, mostrar_por_pagina).fadeIn('100');
+	$('#form').children('.passo').css({"visibility":"hidden"});
+	$('#form').children().slice(0, mostrar_por_pagina).fadeIn('100').css({"visibility":"visible"});
 
 
 	// Altera imagem do genero do rosto
@@ -109,12 +101,10 @@ $(document).ready(function(){
                     0: function (){
                         $('#form .nome').val("");
                         $('#form .email').val("");
-                        // $('#inline_content h3, #inline_content .wpcf7-form .form1, #inline_content .wpcf7-form p').hide();
                     },
                     200: function (){
                         $('#form .nome').val("");
                         $('#form .email').val("");
-                        // $('#inline_content h3, #inline_content .wpcf7-form .form1, #inline_content .wpcf7-form p').hide();
                     }
                 }
             });
@@ -135,7 +125,7 @@ function ir_para_pagina(numero_da_pagina) {
 
     //o número do elemento onde terminar a fatia
     end_on = inicia + mostrar_por_pagina;
-    $('#form').children('.passo').fadeOut('fast').slice(inicia, end_on).fadeIn('100');
+    $('#form').children('.passo').css({"visibility":"hidden"}).slice(inicia, end_on).fadeIn('100').css({"visibility":"visible"});
     $('.page[longdesc=' + numero_da_pagina+ ']').addClass('active').siblings('.active').removeClass('active');
     $('#current_page').val(numero_da_pagina);
 }

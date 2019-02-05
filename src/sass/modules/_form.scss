@@ -2,8 +2,14 @@
 	height:calc(100vh - 242px);
 }
 .form {
+	position: relative;
+    height: calc(100vh - 182px);
 	.passo {
 		padding:0 43px;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
 	}
 	&__input {
 		margin-bottom:30px;
@@ -76,6 +82,9 @@
 	}
 	input[type=checkbox] {
 		display:none;
+	}
+	input.error {
+		border-bottom-color:red;
 	}
 	.radio-box {
 		display:flex;
