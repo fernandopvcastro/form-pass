@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 	//atribuimos ao primeiro link a class active
 	$('.controls .page:first').addClass('active');
-	$('#form').children().hide();
+	$('#form').children('.passo').fadeOut();
 	$('#form').children().slice(0, mostrar_por_pagina).fadeIn('100');
 
 
@@ -83,11 +83,13 @@ $(document).ready(function(){
     //     return false
     // });
 
-
     // VALIDA FORMULARIO
     $('#form').validate({
         rules: {
-            nome: "required",
+            nome: {
+                required:true,
+                minlength:3
+            },
             email: {required:true, email:true}
         },
         messages: {
@@ -99,7 +101,6 @@ $(document).ready(function(){
             var email = $('#form .email').val();
             console.log("enviou");
             $.ajax({
-                // url: "https://docs.google.com/forms/d/1kr7oio7_Q696f7q1Wd--nDpG9Od8zm-dGfyUWT-WJd0/formResponse",
                 url: "https://docs.google.com/forms/d/e/1FAIpQLSdLGLRKBzrdktz4ASoSudlWEMyAsQFFnB8qm7Meq3UoDH0zpQ/formResponse",
                 data: {"entry.385834645" : nome, "entry.1989384119" : email},
                 type: "POST",
@@ -117,6 +118,9 @@ $(document).ready(function(){
                     }
                 }
             });
+        },
+        error: function(){
+            console.log("não enviou");
         }
 	});
 });
@@ -131,7 +135,7 @@ function ir_para_pagina(numero_da_pagina) {
 
     //o número do elemento onde terminar a fatia
     end_on = inicia + mostrar_por_pagina;
-    $('#form').children().hide().slice(inicia, end_on).fadeIn('100');
+    $('#form').children('.passo').fadeOut('fast').slice(inicia, end_on).fadeIn('100');
     $('.page[longdesc=' + numero_da_pagina+ ']').addClass('active').siblings('.active').removeClass('active');
     $('#current_page').val(numero_da_pagina);
 }
