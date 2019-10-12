@@ -63,18 +63,6 @@ $(document).ready(function(){
 		}
 	});
 
-
-	// Troca cards em exibição
-    // $('.tab-link').click(function() {
-    //     var index = $(this).parent().index();
-    //     $('.cards-container').parent().fadeOut();
-    //     $('.cards-container').eq(index).parent().fadeIn('fast');
-
-    //     $('.nav_tab-item').removeClass('active');
-    //     $(this).parent().addClass('active');
-    //     return false
-    // });
-
     // VALIDA FORMULARIO
     $('#form').validate({
         rules: {
@@ -88,6 +76,13 @@ $(document).ready(function(){
             nome: " ",
             email: {required:" ", email:" "}
         },
+        invalidHandler: function(event, validator) {
+		    var errors = validator.numberOfInvalids();
+
+		    ir_para_pagina(0);
+		    $('.bt_next').show();
+	    	$('.bt_enviar').hide();
+  		},
         submitHandler: function (){
             var nome = $('#form .nome').val();
             var email = $('#form .email').val();
