@@ -63,6 +63,19 @@ $(document).ready(function(){
 		}
 	});
 
+
+	function getValues(element) {
+		var pacote = document.querySelectorAll('#form .'+element+':checked');
+		var valores = '';
+		for (var i = 0; i < pacote.length; i++) {
+			valores += pacote[i].value;
+			i < pacote.length ? valores += ',\n' : '.';
+		}
+		return valores;
+	}
+
+
+
     // VALIDA FORMULARIO
     $('#form').validate({
         rules: {
@@ -84,22 +97,59 @@ $(document).ready(function(){
 	    	$('.bt_enviar').hide();
   		},
         submitHandler: function (){
-            var nome = $('#form .nome').val();
-            var email = $('#form .email').val();
+            var nome = $('#form .nome').val(),
+	            email = $('#form .email').val(),
+	            radio1 = $('#form .gender:checked').val(),
+	            princMotivos = $('#form .mensagem').val(),
+	            radio2 = $('#form .radio2:checked').val(),
+
+	            attrEmocionais = getValues('attr_emocionais'),
+	            area_rosto = getValues('area_rosto'),
+	            area_corpo = getValues('area_corpo'),
+
+	            qualidade_pele = $('#form .qualidade_pele:checked').val(),
+	            aspecto_pele = $('#form .aspecto_pele:checked').val(),
+	            melhora_pele = getValues('melhora_pele'),
+	            melhora_face = getValues('melhora_face'),
+	            trata_corporal = getValues('trata_corporal'),
+	            outros_trata = getValues('outros_trata'),
+	            como_soube = getValues('como_soube'),
+	            contato_info = getValues('contato_info');
+
             console.log("enviou");
+
             $.ajax({
                 url: "https://docs.google.com/forms/d/e/1FAIpQLSdLGLRKBzrdktz4ASoSudlWEMyAsQFFnB8qm7Meq3UoDH0zpQ/formResponse",
-                data: {"entry.385834645" : nome, "entry.1989384119" : email},
+                data: {
+                	"entry.385834645" : nome,
+                	"entry.1989384119" : email,
+                	"entry.1028986575" : radio1,
+                	"entry.1815547523" : princMotivos,
+                	"entry.1153845912" : radio2,
+                	"entry.401523140" : attrEmocionais,
+                	"entry.1024530832" : area_rosto,
+                	"entry.793102984" : area_corpo,
+                	"entry.889905275" : qualidade_pele,
+                	"entry.1409966074" : aspecto_pele,
+                	"entry.1448753313" : melhora_pele,
+                	"entry.1581848131" : melhora_face,
+                	"entry.912423760" : trata_corporal,
+                	"entry.2007450612" : outros_trata,
+                	"entry.253155816" : como_soube,
+                	"entry.1318168723" : contato_info
+                },
                 type: "POST",
                 dataType: "xml",
                 statusCode: {
                     0: function (){
-                        $('#form .nome').val("");
-                        $('#form .email').val("");
+                    	console.log("status 0");
+
+			            window.location = 'http://drajulianajordao.com.br/formulario/obrigado.html';
                     },
                     200: function (){
-                        $('#form .nome').val("");
-                        $('#form .email').val("");
+                    	console.log("status 200");
+
+			            window.location = 'http://drajulianajordao.com.br/formulario/obrigado.html';
                     }
                 }
             });
